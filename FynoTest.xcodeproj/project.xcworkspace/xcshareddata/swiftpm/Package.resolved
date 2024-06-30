@@ -1,0 +1,15 @@
+{
+  "originHash" : "b027e245693a78e655ec67df2106896fe30054ed8eef98cc6a8e53eb1e914b3d",
+  "pins" : [
+    {
+      "identity" : "netrunner",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ruslankuksa/NetRunner",
+      "state" : {
+        "branch" : "main",
+        "revision" : "fc02739aa42abee80e68db5b1109a80cd8cd1aa0"
+      }
+    }
+  ],
+  "version" : 3
+}

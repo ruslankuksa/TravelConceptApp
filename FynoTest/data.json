@@ -1,0 +1,127 @@
+{
+    "name": "Victoria",
+    "lastName": "Conway",
+    "bio": "Chasing sunsets, climbing mountains, and diving into new cultures. Exploring the world, one adventure at a time.",
+    "avatar": "https://i.postimg.cc/tC8rSV5s/pascal-brauer-5k-Cx-Js-W4-Fs-unsplash.jpg",
+    "countries": [
+        {
+            "name": "Germany",
+            "flag": "🇩🇪",
+            "location": {
+                "latitude": 52.520008,
+                "longitude": 13.404954
+            },
+            "visited": true
+        },
+
+        {
+            "name": "Brazil",
+            "flag": "🇧🇷",
+            "location": {
+                "latitude": -15.793889,
+                "longitude": -47.882778
+            },
+            "visited": true
+        },
+        
+        {
+            "name": "New Zeland",
+            "flag": "🇳🇿",
+            "location": {
+                "latitude": -36.848461,
+                "longitude": 174.763336
+            },
+            "visited": false
+        },
+
+        {
+            "name": "Spain",
+            "flag": "🇪🇸",
+            "location": {
+                "latitude": 40.416775,
+                "longitude": -3.703790
+            },
+            "visited": true
+        },
+
+        {
+            "name": "Canada",
+            "flag": "🇨🇦",
+            "location": {
+                "latitude": 59.832298,
+                "longitude": -109.445374
+            },
+            "visited": false
+        },
+
+        {
+            "name": "Japan",
+            "flag": "🇯🇵",
+            "location": {
+                "latitude": 36.673342,
+                "longitude": 138.970590
+            },
+            "visited": false
+        },
+
+        {
+            "name": "Iceland",
+            "flag": "🇮🇸",
+            "location": {
+                "latitude": 64.128288,
+                "longitude": -21.827774
+            },
+            "visited": true
+        },
+        
+        {
+            "name": "Kenya",
+            "flag": "🇰🇪",
+            "location": {
+                "latitude": 0.1768696,
+                "longitude": 37.9083264
+            },
+            "visited": false
+        },
+        
+        {
+            "name": "Egypt",
+            "flag": "🇪🇬",
+            "location": {
+                "latitude": 26.8357675,
+                "longitude": 30.7956597
+            },
+            "visited": true
+        },
+        
+        {
+            "name": "South Africa",
+            "flag": "🇿🇦",
+            "location": {
+                "latitude": -28.4792625,
+                "longitude": 24.6727135
+            },
+            "visited": false
+        },
+        
+        {
+            "name": "Mexico",
+            "flag": "🇲🇽",
+            "location": {
+                "latitude": 23.6260333,
+                "longitude": -102.5375005
+            },
+            "visited": false
+        },
+        
+        {
+            "name": "India",
+            "flag": "🇮🇳",
+            "location": {
+                "latitude": 21.1289956,
+                "longitude": 82.7792201
+            },
+            "visited": true
+        },
+    ]
+}
