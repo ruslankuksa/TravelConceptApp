@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var model = ContentModel()
     @State private var sheetPresented = true
     @State private var presentationDetent: PresentationDetent = .medium
-//    @State private var mapPosition: MapCameraPosition = .userLocation(followsHeading: true, fallback: .automatic)
+    //    @State private var mapPosition: MapCameraPosition = .userLocation(followsHeading: true, fallback: .automatic)
     
     var body: some View {
         Map {
@@ -35,23 +35,21 @@ struct ContentView: View {
             }
         }
         .sheet(isPresented: $sheetPresented) {
-            GeometryReader { proxy in
-                SheetView(model: model)
-                    .interactiveDismissDisabled()
-                    .presentationDetents([.fraction(0.2), .medium, .fraction(0.7)], selection: $presentationDetent)
-                    .presentationBackgroundInteraction(.enabled(upThrough: .medium))
-                    .presentationContentInteraction(.resizes)
-                    .presentationCornerRadius(25)
-                    .presentationDragIndicator(.hidden)
-                    .clipShape(
-                        .rect(topLeadingRadius: 16, topTrailingRadius: 16)
-                    )
-                    .onChange(of: presentationDetent) {
-                        if presentationDetent == .fraction(0.2) {
-                            presentationDetent = .medium
-                        }
+            SheetView(model: model)
+                .interactiveDismissDisabled()
+                .presentationDetents([.fraction(0.2), .medium, .fraction(0.7)], selection: $presentationDetent)
+                .presentationBackgroundInteraction(.enabled(upThrough: .medium))
+                .presentationContentInteraction(.resizes)
+                .presentationCornerRadius(25)
+                .presentationDragIndicator(.hidden)
+                .clipShape(
+                    .rect(topLeadingRadius: 16, topTrailingRadius: 16)
+                )
+                .onChange(of: presentationDetent) {
+                    if presentationDetent == .fraction(0.2) {
+                        presentationDetent = .medium
                     }
-            }
+                }
         }
     }
 }

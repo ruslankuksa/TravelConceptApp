@@ -52,21 +52,36 @@ struct SheetView: View {
             .background()
             .sheet(isPresented: $addVisitedSheetPresented) {
                 SearchView(query: $query, data: model.getFilteredCountries(by: query)) { country in
-                    Text(country.description)
+                    HStack {
+                        Text(country.description)
+                        if model.user.visitedCountries.contains(country) {
+                            Spacer()
+                            Image(systemName: "checkmark")
+                                .foregroundStyle(.green)
+                        }
+                    }
                 } onSelect: { country in
                     model.addVisitedCountry(country)
-                    addVisitedSheetPresented = false
                 }
                 .task {
                     await model.fetchCountries()
                 }
             }
             .sheet(isPresented: $addUnvisitedSheetPresented) {
-                SearchView(query: $query, data: model.getFilteredCountries(by: query)) { country in
-                    Text(country.description)
+                SearchView(
+                    query: $query,
+                    data: model.getFilteredCountries(by: query, exclude: model.user.visitedCountries)
+                ) { country in
+                    HStack {
+                        Text(country.description)
+                        if model.user.unvisitedCountries.contains(country) {
+                            Spacer()
+                            Image(systemName: "checkmark")
+                                .foregroundStyle(.green)
+                        }
+                    }
                 } onSelect: { country in
                     model.addUnvisitedCountry(country)
-                    addUnvisitedSheetPresented = false
                 }
                 .task {
                     await model.fetchCountries()

@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-struct Country: Codable, Identifiable {
+final class Country: Codable, Identifiable {
     
     struct Location: Codable {
         let latitude: Double
@@ -33,7 +33,14 @@ struct Country: Codable, Identifiable {
         )
     }
     
-    mutating func setVisited(_ value: Bool) {
+    init(name: String, flag: String, location: Location, visited: Bool = false) {
+        self.name = name
+        self.flag = flag
+        self.location = location
+        self.visited = visited
+    }
+    
+    func setVisited(_ value: Bool) {
         self.visited = value
     }
 }

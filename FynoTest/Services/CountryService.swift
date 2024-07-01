@@ -8,12 +8,12 @@
 import Foundation
 import NetRunner
 
-protocol CountryServiceProtocol: NetRunner {
+protocol CountryServiceProtocol {
     
     func getAllCountries() async throws -> [SearchCountryDTO]
 }
 
-final class CountryService: CountryServiceProtocol {
+final class CountryService: CountryServiceProtocol, NetRunner {
     
     func getAllCountries() async throws -> [SearchCountryDTO] {
         let request = CountryRequest(endpoint: .independent)

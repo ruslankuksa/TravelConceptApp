@@ -42,26 +42,50 @@ final class ContentModel {
         guard countries.isEmpty else { return }
         do {
             let countriesDTO = try await countryService.getAllCountries()
-            self.countries = countriesDTO.map { $0.convertToCountry() }
+            self.countries = countriesDTO.map { $0.convertToCountry() }.sorted { $0.name < $1.name }
         } catch {
             debugPrint(error.localizedDescription)
         }
     }
     
     func addVisitedCountry(_ country: Country) {
-        var visitedCountry = country
-        visitedCountry.setVisited(true)
-        user.countries.insert(visitedCountry, at: 0)
+        guard let containedCountry = user.countries.first(where: { $0.name == country.name }) else {
+            addNewCountry(country, visited: true)
+            return
+        }
+        
+        if containedCountry.visited {
+            removeCountry(country)
+        } else {
+            removeCountry(country)
+            addNewCountry(country, visited: true)
+        }
     }
     
-    func getFilteredCountries(by query: String) -> [Country] {
-        guard !query.isEmpty else {
-            return countries
+    private func addNewCountry(_ country: Country, visited: Bool = false) {
+        country.setVisited(visited)
+        user.countries.insert(country, at: 0)
+    }
+    
+    private func removeCountry(_ country: Country) {
+        if let index = user.countries.firstIndex(where: { $0.name == country.name }) {
+            user.countries.remove(at: index)
         }
-        return countries.filter { $0.name.contains(query) }
     }
     
     func addUnvisitedCountry(_ country: Country) {
-        user.countries.insert(country, at: 0)
+        if let containedCountry = user.countries.first(where: { $0.name == country.name }) {
+            removeCountry(containedCountry)
+            return
+        }
+        addNewCountry(country)
+    }
+    
+    func getFilteredCountries(by query: String, exclude: [Country] = []) -> [Country] {
+        guard !query.isEmpty else {
+            return countries.filter { !exclude.contains($0) }
+        }
+        let filtered = countries.filter { !exclude.contains($0) }
+        return filtered.filter { $0.name.contains(query) }
     }
 }

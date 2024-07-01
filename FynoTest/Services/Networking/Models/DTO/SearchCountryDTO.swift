@@ -41,8 +41,7 @@ struct SearchCountryDTO: Decodable, Identifiable, CustomStringConvertible {
             location: Country.Location(
                 latitude: latitude,
                 longitude: longitude
-            ),
-            visited: false
+            )
         )
     }
 }

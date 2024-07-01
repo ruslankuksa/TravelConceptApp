@@ -14,7 +14,7 @@ struct CapsuleButtonStyle: ButtonStyle {
             .padding(.vertical, 8)
             .padding(.horizontal, 16)
             .foregroundStyle(Color.indigo)
-            .background(Color(UIColor.systemGray6))
+            .background(Color(UIColor.systemGray5))
             .font(.body)
             .fontWeight(.semibold)
             .clipShape(Capsule())

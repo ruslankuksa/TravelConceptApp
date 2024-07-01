@@ -7,8 +7,10 @@
 
 import SwiftUI
 
+@MainActor
 struct SearchView<Data: RandomAccessCollection, Label: View>: View where Data.Element: Identifiable {
     
+    @Environment(\.dismiss) private var dismiss
     @Binding var query: String
     
     let data: Data
@@ -55,8 +57,8 @@ struct SearchView<Data: RandomAccessCollection, Label: View>: View where Data.El
             )
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Cancel") {
-                        
+                    Button("Done") {
+                        dismiss.callAsFunction()
                     }
                     .tint(.indigo)
                 }
