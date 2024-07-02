@@ -22,13 +22,20 @@ struct SheetView: View {
     private let prefix = 3
     
     var visitedCountries: [Country] {
-        let visited = model.user.visitedCountries
-        return Array(visited.prefix(visitedExtended ? visited.count : 3))
+        let visitedCountries = model.user.visitedCountries
+        guard visitedCountries.count > 3 else {
+            return visitedCountries
+        }
+        
+        return Array(visitedCountries.prefix(visitedExtended ? visitedCountries.count : 3))
     }
     
     var unvisitedCountries: [Country] {
-        let unvisited = model.user.unvisitedCountries
-        return Array(unvisited.prefix(unvisitedExtended ? unvisited.count : 3))
+        let unvisitedCountries = model.user.unvisitedCountries
+        guard unvisitedCountries.count > 3 else {
+            return unvisitedCountries
+        }
+        return Array(unvisitedCountries.prefix(unvisitedExtended ? unvisitedCountries.count : 3))
     }
     
     var extendedVisitedTitle: String {

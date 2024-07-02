@@ -21,24 +21,28 @@ extension SheetView {
                 Section {
                     ForEach(visitedCountries) { country in
                         countryRow(country)
+                            .matchedGeometryEffect(id: "\(country.name)_visited", in: animation)
                     }
                     
-                    Button(action: {
-                        withAnimation {
-                            visitedExtended.toggle()
-                        }
-                    }, label: {
-                        HStack {
-                            Image(systemName: "chevron.down")
-                                .matchedGeometryEffect(id: "visitedExtendButton", in: animation)
-                                .rotationEffect(.degrees(visitedExtended ? 180 : 0))
-                            Text(extendedVisitedTitle)
-                                .matchedGeometryEffect(id: "visitedExtendedTitle", in: animation)
-                        }
-                    })
-                    .font(.caption)
-                    .foregroundStyle(.gray)
-                    .padding(.horizontal)
+                    if model.user.visitedCountries.count > 3 {
+                        Button(action: {
+                            withAnimation(.easeInOut(duration: 0.3)) {
+                                visitedExtended.toggle()
+                            }
+                        }, label: {
+                            HStack {
+                                Image(systemName: "chevron.down")
+                                    .matchedGeometryEffect(id: "visitedExtendButton", in: animation)
+                                    .rotationEffect(.degrees(visitedExtended ? 180 : 0))
+                                Text(extendedVisitedTitle)
+                                    .matchedGeometryEffect(id: "visitedExtendedTitle", in: animation)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        })
+                        .font(.caption)
+                        .foregroundStyle(.gray)
+                        .padding(.horizontal)
+                    }
                 } header: {
                     headerView(title: "I've been to:") {
                         addVisitedSheetPresented = true
@@ -52,24 +56,28 @@ extension SheetView {
                 Section {
                     ForEach(unvisitedCountries) { country in
                         countryRow(country)
+                            .matchedGeometryEffect(id: "\(country.name)_unvisited", in: animation)
                     }
                     
-                    Button(action: {
-                        withAnimation {
-                            unvisitedExtended.toggle()
-                        }
-                    }, label: {
-                        HStack {
-                            Image(systemName: "chevron.down")
-                                .matchedGeometryEffect(id: "unvisitedExtendButton", in: animation)
-                                .rotationEffect(.degrees(unvisitedExtended ? 180 : 0))
-                            Text(extendedUnvisitedTitle)
-                                .matchedGeometryEffect(id: "unvisitedExtendedTitle", in: animation)
-                        }
-                    })
-                    .font(.caption)
-                    .foregroundStyle(.gray)
-                    .padding(.horizontal)
+                    if model.user.unvisitedCountries.count > 3 {
+                        Button(action: {
+                            withAnimation(.easeInOut(duration: 0.3)) {
+                                unvisitedExtended.toggle()
+                            }
+                        }, label: {
+                            HStack {
+                                Image(systemName: "chevron.down")
+                                    .matchedGeometryEffect(id: "unvisitedExtendButton", in: animation)
+                                    .rotationEffect(.degrees(unvisitedExtended ? 180 : 0))
+                                Text(extendedUnvisitedTitle)
+                                    .matchedGeometryEffect(id: "unvisitedExtendedTitle", in: animation)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        })
+                        .font(.caption)
+                        .foregroundStyle(.gray)
+                        .padding(.horizontal)
+                    }
                 } header: {
                     headerView(title: "My bucket list:") {
                         addUnvisitedSheetPresented = true
@@ -95,7 +103,7 @@ extension SheetView {
     
     typealias Action = () -> Void
     
-    func headerView(title: String, action: @escaping Action) -> some View {
+    private func headerView(title: String, action: @escaping Action) -> some View {
         HStack {
             Text(title)
                 .fontWeight(.semibold)

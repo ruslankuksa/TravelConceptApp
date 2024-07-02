@@ -56,7 +56,7 @@ struct SearchView<Data: RandomAccessCollection, Label: View>: View where Data.El
                 prompt: "Enter country name"
             )
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItem(placement: .topBarLeading) {
                     Button("Done") {
                         dismiss.callAsFunction()
                     }
