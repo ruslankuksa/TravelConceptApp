@@ -21,14 +21,20 @@ struct ContentView: View {
         Map(position: $mapPosition) {
             ForEach(model.user.countries) { country in
                 Annotation(country.name, coordinate: country.locationCoordinate) {
-                    BubbleAnnotationView(image: country.flag, showBadge: country.visited)
+                    Button {
+                        withAnimation {
+                            mapPosition = .camera(MapCamera(centerCoordinate: country.locationCoordinate, distance: 3000000))
+                        }
+                    } label: {
+                        BubbleAnnotationView(image: country.flag, showBadge: country.visited)
+                    }
                 }
-                .annotationTitles(.hidden)
+                .annotationTitles(.automatic)
             }
         }
-        .mapStyle(.imagery(elevation: .realistic))
+        .mapStyle(.hybrid(elevation: .realistic))
         .offset(y: -mapOffset + mapOffset / 2)
-        .contentMargins(.bottom, mapOffset / 2, for: .automatic)
+        .contentMargins(.vertical, mapOffset / 2, for: .scrollContent)
         .task {
             await model.fetchUserData()
         }
