@@ -13,10 +13,11 @@ final class ContentModel {
     
     private let userService: UserServiceProtocol
     private let countryService: CountryServiceProtocol
+    
     private(set) var user: User
     private(set) var isLoading = false
-    
     private(set) var countries: [Country] = []
+    private(set) var selectedCountry: Country?
     
     init(
         user: User = .defaultUser,
@@ -36,6 +37,10 @@ final class ContentModel {
         } catch {
             debugPrint(error.localizedDescription)
         }
+    }
+    
+    func selectCountry(_ country: Country) {
+        selectedCountry = country
     }
     
     func fetchCountries() async {

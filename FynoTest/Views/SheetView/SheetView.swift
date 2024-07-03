@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SheetView: View {
     
+    typealias Action = () -> Void
+    
     @Bindable var model: ContentModel
     
     @State var addVisitedSheetPresented = false

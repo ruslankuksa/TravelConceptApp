@@ -91,17 +91,21 @@ extension SheetView {
     }
     
     private func countryRow(_ country: Country) -> some View {
-        HStack {
-            Text(country.flag)
-            Text(country.name)
+        Button {
+            model.selectCountry(country)
+        } label: {
+            HStack {
+                Text(country.flag)
+                Text(country.name)
+            }
+            .padding(.horizontal)
+            .foregroundStyle(.primary)
         }
-        .padding(.horizontal)
+        .buttonStyle(.plain)
     }
 }
 
 extension SheetView {
-    
-    typealias Action = () -> Void
     
     private func headerView(title: String, action: @escaping Action) -> some View {
         HStack {

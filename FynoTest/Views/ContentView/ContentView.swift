@@ -23,7 +23,7 @@ struct ContentView: View {
                 Annotation(country.name, coordinate: country.locationCoordinate) {
                     Button {
                         withAnimation {
-                            mapPosition = .camera(MapCamera(centerCoordinate: country.locationCoordinate, distance: 3000000))
+                            moveMapCamera(on: country)
                         }
                     } label: {
                         BubbleAnnotationView(image: country.flag, showBadge: country.visited)
@@ -42,6 +42,14 @@ struct ContentView: View {
             if model.isLoading {
                 ProgressView()
                     .tint(.white)
+            }
+        }
+        .onChange(of: model.selectedCountry) {
+            guard let country = model.selectedCountry else {
+                return
+            }
+            withAnimation {
+                moveMapCamera(on: country)
             }
         }
         .sheet(isPresented: $sheetPresented) {
@@ -66,6 +74,16 @@ struct ContentView: View {
                     }
             }
         }
+    }
+    
+    private func moveMapCamera(on country: Country) {
+        let distanceOnSelect: Double = 3000000
+        mapPosition = .camera(
+            MapCamera(
+                centerCoordinate: country.locationCoordinate,
+                distance: distanceOnSelect
+            )
+        )
     }
 }
 
