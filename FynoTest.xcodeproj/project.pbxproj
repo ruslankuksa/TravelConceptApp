@@ -29,6 +29,7 @@
 		24D918142C2E924300134FF5 /* CountryEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D918132C2E924300134FF5 /* CountryEndpoint.swift */; };
 		24D918172C2EC94F00134FF5 /* SearchCountryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D918162C2EC94F00134FF5 /* SearchCountryDTO.swift */; };
 		24D918192C2F3A5B00134FF5 /* CountryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D918182C2F3A5B00134FF5 /* CountryService.swift */; };
+		24DA08842C36A3EC00F69752 /* LookAroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DA08832C36A3EC00F69752 /* LookAroundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		24D918132C2E924300134FF5 /* CountryEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryEndpoint.swift; sourceTree = "<group>"; };
 		24D918162C2EC94F00134FF5 /* SearchCountryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCountryDTO.swift; sourceTree = "<group>"; };
 		24D918182C2F3A5B00134FF5 /* CountryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryService.swift; sourceTree = "<group>"; };
+		24DA08832C36A3EC00F69752 /* LookAroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookAroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				24A34EB72C25609B007598B1 /* Modifiers */,
 				24C602CE2C23FDD700BD7977 /* Buttons */,
 				247F7AF92C247B9700ABED68 /* BubbleAnnotationView.swift */,
+				24DA08832C36A3EC00F69752 /* LookAroundView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				24C602CA2C23328600BD7977 /* User.swift in Sources */,
 				24D918082C2D346400134FF5 /* SearchView.swift in Sources */,
 				24B2FC0C2C281DFE0078A021 /* PreviewService.swift in Sources */,
+				24DA08842C36A3EC00F69752 /* LookAroundView.swift in Sources */,
 				243E7D1B2C22278000A68A9C /* FynoTestApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
