@@ -45,15 +45,15 @@ struct ContentView: View {
                     .tint(.white)
             }
         }
+        .onMapCameraChange(frequency: .onEnd) { context in
+            showActivities(context)
+        }
         .onChange (of: model.selectedCountry) {
             if let country = model.selectedCountry {
                 withAnimation {
                     moveMapCamera(on: country)
                 }
             }
-        }
-        .onChange(of: onMapSelected) { oldValue, newValue in
-            debugPrint(newValue?.title ?? "No selection value")
         }
         .sheet(isPresented: $sheetPresented) {
             GeometryReader { proxy in
@@ -87,6 +87,26 @@ struct ContentView: View {
                 distance: distanceOnSelect
             )
         )
+    }
+    
+    private func showActivities(_ context: MapCameraUpdateContext) {
+        let rect = context.rect
+        
+        let topLeft = MKMapPoint(x: rect.minX, y: rect.minY)
+        let topRight = MKMapPoint(x: rect.maxX, y: rect.minY)
+        let bottomLeft = MKMapPoint(x: rect.minX, y: rect.maxY)
+        let bottomRight = MKMapPoint(x: rect.maxX, y: rect.maxY)
+        
+        let northLatitude = topLeft.coordinate.latitude
+        let westLongitude = topLeft.coordinate.longitude
+        
+        let southLatitude = bottomRight.coordinate.latitude
+        let eastLongitude = bottomRight.coordinate.longitude
+        
+        debugPrint("North latitude: \(northLatitude)")
+        debugPrint("West longitude: \(westLongitude)")
+        debugPrint("South latitude: \(southLatitude)")
+        debugPrint("East longitude: \(eastLongitude)")
     }
 }
 
